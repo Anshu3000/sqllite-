@@ -46,5 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("ret","oncreate "+coi2.getName()+"/"+coi2.getPhoneno());
 
+        Contact co21=new Contact();
+        co21.setId(3);
+        co21.setName("JAGDISH");
+        co21.setPhoneno("9876500");
+
+        db123.updat(co21);
+
+        Contact coi3=db123.getcon(3);
+
+        Log.d("ret","oncreate "+coi3.getName()+"/"+coi3.getPhoneno());
     }
 }

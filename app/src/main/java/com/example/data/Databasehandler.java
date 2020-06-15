@@ -68,6 +68,20 @@ public class Databasehandler extends SQLiteOpenHelper {
       return null;
     }
 
+   public  int updat(Contact co){
+        SQLiteDatabase db=this.getWritableDatabase();
 
+        ContentValues co1=new ContentValues();
+        co1.put(Util.column_name,co.getName());
+        co1.put(Util.column_phone,co.getPhoneno());
+
+        return db.update(Util.table_name,co1,Util.column_id+"=?",new String[]{String.valueOf(co.getId())});
+   }
+
+   public void del(int id){
+        SQLiteDatabase db=this.getReadableDatabase();
+        db.delete(Util.table_name,Util.column_id+"=?",new String[]{String.valueOf(id)});
+
+   }
 
 }
