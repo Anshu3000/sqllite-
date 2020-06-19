@@ -12,9 +12,8 @@ import androidx.annotation.Nullable;
 import com.example.model.Contact;
 import com.example.util.Util;
 
-
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Databasehandler extends SQLiteOpenHelper {
@@ -83,5 +82,21 @@ public class Databasehandler extends SQLiteOpenHelper {
         db.delete(Util.table_name,Util.column_id+"=?",new String[]{String.valueOf(id)});
 
    }
+
+
+   public  List<Contact> getallc(){
+       List<Contact> li=new ArrayList<>();
+
+        SQLiteDatabase db=this.getReadableDatabase();
+         String col[]={Util.column_id,Util.column_name,Util.column_phone};
+        Cursor co= db.query(Util.table_name,col,null,null,null,null,null);
+
+         while (co.moveToNext()){
+             Contact co12=new Contact(co.getInt(co.getColumnIndex(Util.column_id)),co.getString(co.getColumnIndex(Util.column_name)),co.getString(co.getColumnIndex(Util.column_phone)));
+             li.add(co12);
+         }
+        return li;
+   }
+
 
 }

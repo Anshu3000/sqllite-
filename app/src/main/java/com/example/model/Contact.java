@@ -16,6 +16,11 @@ public class Contact {
         this.phoneno = phoneno;
     }
 
+    public Contact(String name, String phoneno) {
+        this.name = name;
+        this.phoneno = phoneno;
+    }
+
     public int getId() {
         return id;
     }
